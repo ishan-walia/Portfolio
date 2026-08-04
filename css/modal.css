@@ -1,0 +1,72 @@
+/* ==========================================================================
+   POPUP MODAL STYLES (APK DOWNLOAD & CONTACT OVERLAY)
+   ========================================================================== */
+
+.apk-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(4, 6, 12, 0.88);
+    backdrop-filter: blur(14px);
+    z-index: 1000000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.apk-modal-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apk-modal-card {
+    background: #0d121d;
+    border: 1px solid var(--border-glow-green);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 40px var(--matrix-green-glow);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 520px;
+    padding: 30px;
+    position: relative;
+}
+
+.contact-modal-card {
+    background: #0d121d;
+    border: 1px solid var(--border-glow-green);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95), 0 0 40px var(--matrix-green-glow);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 920px;
+    padding: 35px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.apk-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    color: var(--text-muted);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: var(--transition-fast);
+    z-index: 10;
+}
+
+.apk-modal-close:hover {
+    color: var(--accent-red);
+    border-color: var(--accent-red);
+    transform: rotate(90deg);
+}

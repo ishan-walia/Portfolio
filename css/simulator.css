@@ -1,0 +1,66 @@
+/* ==========================================================================
+   UNIFIED CYBERSECURITY CLI & SMARTPHONE WORKSTATION STYLES
+   ========================================================================== */
+
+#app-simulator {
+    padding: 100px 5%;
+    background: rgba(4, 6, 12, 0.5);
+    position: relative;
+}
+
+.cyber-workstation-grid {
+    max-width: 1350px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 30px;
+    align-items: start;
+}
+
+@media (max-width: 1080px) {
+    .cyber-workstation-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.phone-workstation-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.workstation-app-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    background: rgba(14, 18, 28, 0.8);
+    border: 1px solid var(--border-glow-green);
+    padding: 10px 14px;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+}
+
+.app-chip {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-glass);
+    color: var(--text-muted);
+    font-family: var(--font-code);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.app-chip:hover, .app-chip.active {
+    background: rgba(0, 255, 157, 0.12);
+    border-color: var(--matrix-green);
+    color: var(--matrix-green);
+    box-shadow: 0 0 12px var(--matrix-green-glow);
+}

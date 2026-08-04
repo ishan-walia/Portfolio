@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Ishan Walia - Android Developer, Flutter App Specialist, and Cybersecurity Student. Explore mobile applications, security tooling, and interactive CLI.">
+    <meta name="keywords"
+        content="Ishan Walia, Mobile App Developer, Cybersecurity Student, Android Developer, Flutter, Kotlin, Ethical Hacking, NetSpyder, CommandX">
+    <meta name="author" content="Ishan Walia">
+
+    <title>Ishan Walia // Mobile App Developer & Cybersecurity Researcher</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/profile.png">
+
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css?v=4.0">
+
+    <!-- FontAwesome & RemixIcons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+</head>
+
+<body>
+
+    <!-- ==========================================================================
+         1. CUSTOM CYBER-SPIDER SPLASH SCREEN ANIMATION
+         ========================================================================== -->
+    <div id="splash-screen" onclick="dismissSplash()">
+        <canvas id="splash-canvas"></canvas>
+        
+        <div class="splash-btn-group">
+            <button id="play-splash-audio-btn" class="splash-btn splash-voice-btn" onclick="event.stopPropagation(); window.toggleSplashAudio();">
+                <i class="fa-solid fa-volume-high" id="splash-audio-icon"></i>
+                <span id="splash-audio-text">PLAY AUDIO</span>
+            </button>
+
+            <button id="skip-splash-btn" class="splash-btn" onclick="event.stopPropagation(); dismissSplash();">
+                <span>SKIP INTRO</span>
+                <i class="fa-solid fa-forward-step"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Background Matrix & Particle Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- ==========================================================================
+         2. NAVBAR
+         ========================================================================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <img src="images/profile.png" alt="Ishan Walia" class="nav-avatar-img">
+                <span>ISHAN <span class="logo-tag">WALIA</span></span>
+            </a>
+
+
+            <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                <a href="https://github.com/ishan-walia" target="_blank" class="nav-cta">
+                    <i class="fa-brands fa-github"></i>
+                    <span>GITHUB</span>
+                </a>
+                <a href="https://www.linkedin.com/in/ishanwalia" target="_blank" class="nav-cta"
+                    style="border-color: #0077b5; color: #0077b5;">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <span>LINKEDIN</span>
+                </a>
+                <a href="https://www.youtube.com/@hackwithishan" target="_blank" class="nav-cta"
+                    style="border-color: #ff0000; color: #ff0000;">
+                    <i class="fa-brands fa-youtube"></i>
+                    <span>YOUTUBE</span>
+                </a>
+                <a href="https://profile.hackthebox.com/profile/019c3273-a41b-7338-9b6a-7c0cefb77111" target="_blank"
+                    class="nav-cta" style="border-color: #9fef00; color: #9fef00;">
+                    <img src="images/hackthebox.png" alt="Hack The Box" class="htb-nav-logo" style="width: 16px; height: 16px; object-fit: contain;">
+                    <span>HACKTHEBOX</span>
+                </a>
+                <a href="https://tryhackme.com/p/Ishanwalia" target="_blank"
+                    class="nav-cta" style="border-color: #ff2e51; color: #ff2e51;">
+                    <img src="images/favicon.png" alt="TryHackMe" class="thm-nav-logo" style="width: 16px; height: 16px; object-fit: contain;">
+                    <span>TRYHACKME</span>
+                </a>
+            </div>
+
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==========================================================================
+         3. HERO SECTION
+         ========================================================================== -->
+    <section class="hero" id="hero">
+        <div class="hero-container hero-centered">
+            <div class="hero-content">
+
+                <h1 class="hero-title">
+                    Ishan <span class="name-highlight">Walia</span>
+                </h1>
+
+                <div class="typewriter-container">
+                    <span id="typewriter-text"></span>
+                    <span class="cursor"></span>
+                </div>
+
+                <p class="hero-description">
+                    Cybersecurity Researcher & Android/Flutter App Developer crafting secure, high-performance mobile
+                    applications.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#projects" class="btn-primary">
+                        <span>EXPLORE PROJECTS</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                    <button class="btn-primary-ghost" onclick="openContactModal()">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>GET IN TOUCH</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. UNIFIED CYBERSECURITY CLI & SMARTPHONE LAB WORKSTATION
+         ========================================================================== -->
+    <section id="app-simulator">
+        <div class="section-header">
+            <h2 class="section-title">Cybersecurity CLI & Mobile App Lab</h2>
+        </div>
+
+        <div class="cyber-workstation-grid">
+            <!-- Left Panel: Cybersecurity CLI Terminal -->
+            <div class="terminal-wrapper">
+                <div class="terminal-header">
+                    <div class="window-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <div class="terminal-title">
+                        <i class="fa-solid fa-terminal"></i>
+                        <span>ishan@cyber-station:~ (zsh)</span>
+                    </div>
+                    <div style="width: 40px;"></div>
+                </div>
+
+                <div class="terminal-body" id="terminal-body">
+                    <div class="term-welcome">
+                        Type <span class="green">'help'</span> or click app shortcuts below to control both terminal &
+                        smartphone live.<br>
+                        Welcome to Ishan Walia's Cybersecurity Workstation v2.4.0
+                    </div>
+                </div>
+
+                <div class="quick-cmds">
+                    <button class="cmd-btn" onclick="triggerInteractiveNmapScan()"><i
+                            class="fa-solid fa-crosshairs green"></i> target port scan</button>
+                    <button class="cmd-btn" onclick="executeQuickCmd('clear')"><i class="fa-solid fa-eraser"></i>
+                        clear</button>
+                </div>
+
+                <div style="padding: 0 20px 18px; background: #070a10;">
+                    <div class="term-input-row">
+                        <span class="term-prompt">ishan@cyber:~$&nbsp;</span>
+                        <input type="text" id="terminal-input" class="term-input"
+                            placeholder="Type command (e.g. target port scan, netspyder)..." autocomplete="off"
+                            spellcheck="false">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Interactive 3D Smartphone Device Frame -->
+            <div class="phone-workstation-panel">
+                <!-- App Quick Launcher Bar -->
+                <div class="workstation-app-bar">
+                    <button class="app-chip active" onclick="launchPhoneApp('home')"><i class="fa-solid fa-house"></i>
+                        Home</button>
+                    <button class="app-chip" onclick="launchPhoneApp('netspyder')"><i
+                            class="fa-solid fa-spider green"></i> NetSpyder</button>
+                    <button class="app-chip" onclick="launchPhoneApp('commandx')"><i
+                            class="fa-solid fa-terminal cyan"></i> CommandX</button>
+                    <button class="app-chip" onclick="launchPhoneApp('duotrack')"><i
+                            class="fa-solid fa-location-dot purple"></i> DuoTrack</button>
+                    <button class="app-chip" onclick="launchPhoneApp('ecoaware')"><i class="fa-solid fa-leaf green"></i>
+                        EcoAware</button>
+                    <button class="app-chip" onclick="launchPhoneApp('bhakti')"><i class="fa-solid fa-music yellow"></i>
+                        Bhakti</button>
+                </div>
+
+                <div class="smartphone-frame">
+                    <!-- Phone Hardware Notch & Camera -->
+                    <div class="phone-notch">
+                        <div class="camera-lens"></div>
+                        <div class="speaker-grille"></div>
+                    </div>
+
+                    <!-- Phone Screen Display -->
+                    <div class="phone-screen">
+                        <!-- Top Status Bar -->
+                        <div class="phone-status-bar">
+                            <span id="phone-clock">23:10</span>
+                            <div class="phone-status-icons">
+                                <i class="fa-solid fa-wifi"></i>
+                                <i class="fa-solid fa-signal"></i>
+                                <i class="fa-solid fa-battery-full"></i>
+                            </div>
+                        </div>
+
+                        <!-- Screen Views -->
+                        <!-- 1. Home Screen -->
+                        <div class="phone-view active" id="phone-view-home">
+                            <div class="phone-home-time">
+                                <h2>23:10</h2>
+                                <p>Ishan OS v14.0</p>
+                            </div>
+
+                            <div class="phone-app-grid">
+                                <div class="phone-icon-item" onclick="launchPhoneApp('netspyder')">
+                                    <div class="app-icon-bg green-glow"><img src="images/netspyder-logo.png"
+                                            alt="NetSpyder" class="app-grid-logo-img"></div>
+                                    <span>NetSpyder</span>
+                                </div>
+                                <div class="phone-icon-item" onclick="launchPhoneApp('batterywater')">
+                                    <div class="app-icon-bg cyan-glow"><img src="images/batterywater-logo.png"
+                                            alt="Battery Water" class="app-grid-logo-img"></div>
+                                    <span>Battery Water</span>
+                                </div>
+                                <div class="phone-icon-item" onclick="launchPhoneApp('duotrack')">
+                                    <div class="app-icon-bg purple-glow"><i class="fa-solid fa-location-dot"></i></div>
+                                    <span>DuoTrack</span>
+                                </div>
+                                <div class="phone-icon-item" onclick="launchPhoneApp('ecoaware')">
+                                    <div class="app-icon-bg green-glow"><i class="fa-solid fa-leaf"></i></div>
+                                    <span>EcoAware</span>
+                                </div>
+                                <div class="phone-icon-item" onclick="launchPhoneApp('bhakti')">
+                                    <div class="app-icon-bg yellow-glow"><i class="fa-solid fa-music"></i></div>
+                                    <span>Sangeet</span>
+                                </div>
+                                <div class="phone-icon-item"
+                                    onclick="alert('Ishan Walia Mobile Stack: Android SDK, Kotlin, Flutter, Firebase')">
+                                    <div class="app-icon-bg gray-glow"><i class="fa-solid fa-gear"></i></div>
+                                    <span>Settings</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. NetSpyder App View -->
+                        <div class="phone-view" id="phone-view-netspyder">
+                            <div class="app-top-header">
+                                <img src="images/netspyder-logo.png" alt="NetSpyder" class="app-header-logo-img">
+                                NetSpyder Nmap Scanner
+                            </div>
+                            <div class="app-inner-content">
+                                <div class="radar-box">
+                                    <div class="radar-sweep"></div>
+                                    <img src="images/netspyder-logo.png" alt="NetSpyder"
+                                        class="netspyder-radar-logo-img">
+                                </div>
+                                <div class="scan-status-text" id="phone-scan-status">Scanning Target Subnet...</div>
+                                <div class="node-list" id="phone-node-list">
+                                    <div class="node-item"><i class="fa-solid fa-server green"></i> 192.168.1.1
+                                        (Gateway) [PORT 80,443]</div>
+                                    <div class="node-item"><i class="fa-solid fa-mobile cyan"></i> 192.168.1.104
+                                        (Android Node)</div>
+                                    <div class="node-item"><i class="fa-solid fa-laptop purple"></i> 192.168.1.109 (Kali
+                                        Linux)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Battery Water App View -->
+                        <div class="phone-view" id="phone-view-batterywater">
+                            <div class="app-top-header">
+                                <img src="images/batterywater-logo.png" alt="Battery Water" class="app-header-logo-img">
+                                Battery Water Monitor
+                            </div>
+                            <div class="app-inner-content">
+                                <div class="node-item" style="border-left-color: #00f0ff;">
+                                    <i class="fa-solid fa-droplet cyan"></i> Water Level: <strong>85% (Optimal)</strong>
+                                </div>
+                                <div class="cmd-card">
+                                    <div class="cmd-title"><i class="fa-solid fa-heart-pulse green"></i> Battery Health:
+                                        98%</div>
+                                    <div class="cmd-desc">Voltage: 12.8V • Temperature: 28°C • Sensors OK</div>
+                                </div>
+                                <div class="cmd-card">
+                                    <div class="cmd-title"><i class="fa-solid fa-bell yellow"></i> Maintenance Alert
+                                    </div>
+                                    <div class="cmd-desc">Next Distilled Water Refill Scheduled in 18 Days.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. DuoTrack App View -->
+                        <div class="phone-view" id="phone-view-duotrack">
+                            <div class="app-top-header">
+                                <i class="fa-solid fa-location-dot"></i> DuoTrack GPS Radar
+                            </div>
+                            <div class="app-inner-content map-bg">
+                                <div class="gps-pin-marker">
+                                    <div class="gps-pulse"></div>
+                                    <i class="fa-solid fa-street-view"></i>
+                                </div>
+                                <div class="gps-info-bar">
+                                    <div><strong>Ishan Device</strong> (Active)</div>
+                                    <div class="small-text">Lat: 28.6139° N | Long: 77.2090° E</div>
+                                    <div class="status-badge green">GPS LOCKED • 4m Accuracy</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5. EcoAware AI View -->
+                        <div class="phone-view" id="phone-view-ecoaware">
+                            <div class="app-top-header">
+                                <i class="fa-solid fa-leaf"></i> EcoAware AI Assistant
+                            </div>
+                            <div class="app-inner-content chat-bg">
+                                <div class="chat-bubble bot">
+                                    Hello Ishan! How can I assist you with waste sorting or eco campaigns today?
+                                </div>
+                                <div class="chat-bubble user">
+                                    How to recycle plastic bottles properly?
+                                </div>
+                                <div class="chat-bubble bot">
+                                    Rinse the bottle, crush it to save space, and place it in your local PET #1
+                                    recycling bin!
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 6. Bhakti Sangeet View -->
+                        <div class="phone-view" id="phone-view-bhakti">
+                            <div class="app-top-header">
+                                <i class="fa-solid fa-music"></i> Bhakti Sangeet Player
+                            </div>
+                            <div class="app-inner-content audio-bg">
+                                <div class="vinyl-disc" id="vinyl-disc">
+                                    <i class="fa-solid fa-om"></i>
+                                </div>
+                                <div class="track-title">Peaceful Shiv Dhun</div>
+                                <div class="track-artist">Offline Bhajan • Kotlin Player</div>
+
+                                <div class="audio-progress">
+                                    <div class="audio-progress-fill"></div>
+                                </div>
+
+                                <div class="audio-controls">
+                                    <i class="fa-solid fa-backward-step"></i>
+                                    <button class="play-btn" id="music-play-btn" onclick="toggleSimMusic()"><i
+                                            class="fa-solid fa-pause"></i></button>
+                                    <i class="fa-solid fa-forward-step"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phone Home Navigation Bar Gesture at Bottom -->
+                        <div class="phone-home-indicator" onclick="launchPhoneApp('home')" title="Tap to return Home">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         4.5 ABOUT & DUAL SPECIALIZATION
+         ========================================================================== -->
+    <section id="about">
+        <div class="section-header">
+            <h2 class="section-title">Mobile Engineering Meets Cybersecurity</h2>
+        </div>
+
+        <div class="about-grid">
+            <!-- Mobile App Dev Card -->
+            <div class="spec-card">
+                <div class="spec-icon">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+                <h3 class="spec-title">Mobile App Development</h3>
+                <p class="spec-desc">
+                    Specialized in native Android (Kotlin/Java) and cross-platform Flutter development. I build
+                    intuitive, performant apps with offline-first support, live GPS tracking, audio players, and REST
+                    API integrations.
+                </p>
+                <ul class="spec-list">
+                    <li><i class="fa-solid fa-check"></i> Native Android (Kotlin, XML, Jetpack)</li>
+                    <li><i class="fa-solid fa-check"></i> Cross-Platform Apps (Flutter & Dart)</li>
+                    <li><i class="fa-solid fa-check"></i> Real-time Database & Firebase Integration</li>
+                    <li><i class="fa-solid fa-check"></i> Clean UI/UX & Responsive Layouts</li>
+                </ul>
+            </div>
+
+            <!-- Cybersecurity Card -->
+            <div class="spec-card cyber">
+                <div class="spec-icon">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <h3 class="spec-title">Cybersecurity & Security Audit</h3>
+                <p class="spec-desc">
+                    Active Cybersecurity researcher and student focusing on network penetration testing, application
+                    vulnerability assessment, Wireshark packet capture, and security tool development.
+                </p>
+                <ul class="spec-list">
+                    <li><i class="fa-solid fa-check"></i> Mobile & Network Vulnerability Assessment</li>
+                    <li><i class="fa-solid fa-check"></i> Linux Security CLI Tool Development</li>
+                    <li><i class="fa-solid fa-check"></i> Wireshark & Nmap Network Analysis</li>
+                    <li><i class="fa-solid fa-check"></i> Educational Content on YouTube (@hackwithishan)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         6. FEATURED PROJECTS SHOWCASE
+         ========================================================================== -->
+    <section id="projects">
+        <div class="section-header">
+            <h2 class="section-title">Projects & Repositories</h2>
+        </div>
+
+        <div class="projects-filter-bar">
+            <button class="filter-btn active" data-filter="all">ALL PROJECTS</button>
+            <button class="filter-btn" data-filter="mobile">MOBILE APPS</button>
+            <button class="filter-btn" data-filter="cyber">SECURITY & TOOLS</button>
+            <button class="filter-btn" data-filter="ai">AI & CLOUD</button>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Project 1: NetSpyder App -->
+            <div class="project-card" data-category="cyber mobile">
+                <div class="project-header">
+                    <img src="images/netspyder-logo.png" alt="NetSpyder App Logo" class="project-card-logo-img">
+                    <span class="project-tag-badge">FLAGSHIP SECURITY</span>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">NetSpyder App</h3>
+                    <p class="project-desc">
+                        A network security auditing and inspection mobile application for Android. Designed to analyze
+                        active network nodes, port scans, and device discovery.
+                    </p>
+                    <div class="project-tech-stack">
+                        <span class="tech-chip">Kotlin</span>
+                        <span class="tech-chip">Android SDK</span>
+                        <span class="tech-chip">Network Protocols</span>
+                        <span class="tech-chip">Security Audit</span>
+                    </div>
+
+                    <!-- Inline App Demo Screenshots Showcase -->
+                    <div class="project-demo-section">
+                        <div class="demo-section-label"><i class="fa-solid fa-mobile-screen green"></i> APP SCREENSHOTS
+                            DEMO</div>
+                        <div class="project-screenshots-strip">
+                            <img src="images/netspyder/1.jpeg" alt="NetSpyder Demo 1"
+                                onclick="openDemoGallery('NetSpyder App', ['images/netspyder/1.jpeg', 'images/netspyder/2.jpeg', 'images/netspyder/3.jpeg', 'images/netspyder/4.jpeg'], 0)"
+                                title="Click to view full image">
+                            <img src="images/netspyder/2.jpeg" alt="NetSpyder Demo 2"
+                                onclick="openDemoGallery('NetSpyder App', ['images/netspyder/1.jpeg', 'images/netspyder/2.jpeg', 'images/netspyder/3.jpeg', 'images/netspyder/4.jpeg'], 1)"
+                                title="Click to view full image">
+                            <img src="images/netspyder/3.jpeg" alt="NetSpyder Demo 3"
+                                onclick="openDemoGallery('NetSpyder App', ['images/netspyder/1.jpeg', 'images/netspyder/2.jpeg', 'images/netspyder/3.jpeg', 'images/netspyder/4.jpeg'], 2)"
+                                title="Click to view full image">
+                            <img src="images/netspyder/4.jpeg" alt="NetSpyder Demo 4"
+                                onclick="openDemoGallery('NetSpyder App', ['images/netspyder/1.jpeg', 'images/netspyder/2.jpeg', 'images/netspyder/3.jpeg', 'images/netspyder/4.jpeg'], 3)"
+                                title="Click to view full image">
+                        </div>
+                    </div>
+
+                    <div class="project-footer">
+                        <a href="https://github.com/ishan-walia/NetSpyder-App" target="_blank" class="project-link">
+                            <span>VIEW REPO</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.ishanwalia.netspyder&pcampaignid=web_share"
+                            target="_blank" class="apk-download-btn playstore-style-btn">
+                            <i class="fa-brands fa-google-play"></i>
+                            <span>PLAY STORE</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Battery Water App -->
+            <div class="project-card" data-category="mobile">
+                <div class="project-header">
+                    <img src="images/batterywater-logo.png" alt="Battery Water App Logo" class="project-card-logo-img">
+                    <span class="project-tag-badge">HARDWARE & MONITORING</span>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">Battery Water App</h3>
+                    <p class="project-desc">
+                        An Android mobile application for monitoring battery water levels, voltage health metrics, and
+                        automated maintenance refill reminders.
+                    </p>
+                    <div class="project-tech-stack">
+                        <span class="tech-chip">Kotlin</span>
+                        <span class="tech-chip">Android SDK</span>
+                        <span class="tech-chip">Hardware Sensors</span>
+                        <span class="tech-chip">Local Notifications</span>
+                    </div>
+
+                    <!-- Inline App Demo Screenshots Showcase -->
+                    <div class="project-demo-section">
+                        <div class="demo-section-label"><i class="fa-solid fa-mobile-screen cyan"></i> APP SCREENSHOTS
+                            DEMO</div>
+                        <div class="project-screenshots-strip">
+                            <img src="images/batterywater/batt1.jpeg" alt="Battery Water Demo 1"
+                                onclick="openDemoGallery('Battery Water App', ['images/batterywater/batt1.jpeg', 'images/batterywater/batt2.jpeg', 'images/batterywater/batt3.jpeg', 'images/batterywater/batt4.jpeg', 'images/batterywater/batt5.jpeg', 'images/batterywater/batt6.jpeg', 'images/batterywater/batt7.jpeg'], 0)"
+                                title="Click to view full image">
+                            <img src="images/batterywater/batt2.jpeg" alt="Battery Water Demo 2"
+                                onclick="openDemoGallery('Battery Water App', ['images/batterywater/batt1.jpeg', 'images/batterywater/batt2.jpeg', 'images/batterywater/batt3.jpeg', 'images/batterywater/batt4.jpeg', 'images/batterywater/batt5.jpeg', 'images/batterywater/batt6.jpeg', 'images/batterywater/batt7.jpeg'], 1)"
+                                title="Click to view full image">
+                            <img src="images/batterywater/batt3.jpeg" alt="Battery Water Demo 3"
+                                onclick="openDemoGallery('Battery Water App', ['images/batterywater/batt1.jpeg', 'images/batterywater/batt2.jpeg', 'images/batterywater/batt3.jpeg', 'images/batterywater/batt4.jpeg', 'images/batterywater/batt5.jpeg', 'images/batterywater/batt6.jpeg', 'images/batterywater/batt7.jpeg'], 2)"
+                                title="Click to view full image">
+                            <img src="images/batterywater/batt4.jpeg" alt="Battery Water Demo 4"
+                                onclick="openDemoGallery('Battery Water App', ['images/batterywater/batt1.jpeg', 'images/batterywater/batt2.jpeg', 'images/batterywater/batt3.jpeg', 'images/batterywater/batt4.jpeg', 'images/batterywater/batt5.jpeg', 'images/batterywater/batt6.jpeg', 'images/batterywater/batt7.jpeg'], 3)"
+                                title="Click to view full image">
+                            <img src="images/batterywater/batt5.jpeg" alt="Battery Water Demo 5"
+                                onclick="openDemoGallery('Battery Water App', ['images/batterywater/batt1.jpeg', 'images/batterywater/batt2.jpeg', 'images/batterywater/batt3.jpeg', 'images/batterywater/batt4.jpeg', 'images/batterywater/batt5.jpeg', 'images/batterywater/batt6.jpeg', 'images/batterywater/batt7.jpeg'], 4)"
+                                title="Click to view full image">
+                            <img src="images/batterywater/batt6.jpeg" alt="Battery Water Demo 6"
+                                onclick="openDemoGallery('Battery Water App', ['images/batterywater/batt1.jpeg', 'images/batterywater/batt2.jpeg', 'images/batterywater/batt3.jpeg', 'images/batterywater/batt4.jpeg', 'images/batterywater/batt5.jpeg', 'images/batterywater/batt6.jpeg', 'images/batterywater/batt7.jpeg'], 5)"
+                                title="Click to view full image">
+                            <img src="images/batterywater/batt7.jpeg" alt="Battery Water Demo 7"
+                                onclick="openDemoGallery('Battery Water App', ['images/batterywater/batt1.jpeg', 'images/batterywater/batt2.jpeg', 'images/batterywater/batt3.jpeg', 'images/batterywater/batt4.jpeg', 'images/batterywater/batt5.jpeg', 'images/batterywater/batt6.jpeg', 'images/batterywater/batt7.jpeg'], 6)"
+                                title="Click to view full image">
+                        </div>
+                    </div>
+
+                    <div class="project-footer">
+                        <a href="https://github.com/ishan-walia" target="_blank" class="project-link">
+                            <span>VIEW REPO</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.ishan.batterywater" target="_blank"
+                            class="apk-download-btn playstore-style-btn">
+                            <i class="fa-brands fa-google-play"></i>
+                            <span>PLAY STORE</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: DuoTrack App -->
+            <div class="project-card" data-category="mobile">
+                <div class="project-header">
+                    <i class="fa-solid fa-location-dot project-icon-large"></i>
+                    <span class="project-tag-badge">GPS & FIREBASE</span>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">DuoTrack App</h3>
+                    <p class="project-desc">
+                        Real-time GPS location sharing application with Google Maps API integration, background tracking
+                        service, Firebase synchronization, and auto-reconnect fallback.
+                    </p>
+                    <div class="project-tech-stack">
+                        <span class="tech-chip">Kotlin</span>
+                        <span class="tech-chip">Firebase</span>
+                        <span class="tech-chip">Google Maps API</span>
+                        <span class="tech-chip">Background Service</span>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://github.com/ishan-walia/DuoTrack-App" target="_blank" class="project-link">
+                            <span>VIEW REPO</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                        <button class="apk-download-btn playstore-style-btn"
+                            onclick="openApkModal('DuoTrack App', 'https://github.com/ishan-walia/DuoTrack-App', 'Kotlin & Firebase Maps', 'fa-location-dot')">
+                            <i class="fa-brands fa-google-play"></i>
+                            <span>PLAY STORE</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: EcoAware AI App -->
+            <div class="project-card" data-category="ai mobile">
+                <div class="project-header">
+                    <i class="fa-solid fa-leaf project-icon-large"></i>
+                    <span class="project-tag-badge">FLUTTER & AI</span>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">EcoAware AI App</h3>
+                    <p class="project-desc">
+                        Domain-specific generative AI application engineered with Flutter to promote environmental
+                        awareness via AI chatbot interactions, waste recognition, and green campaign creation.
+                    </p>
+                    <div class="project-tech-stack">
+                        <span class="tech-chip">Flutter</span>
+                        <span class="tech-chip">Dart</span>
+                        <span class="tech-chip">Generative AI API</span>
+                        <span class="tech-chip">Cross-Platform</span>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://github.com/ishan-walia/ecoaware-ai-app" target="_blank" class="project-link">
+                            <span>VIEW REPO</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                        <button class="apk-download-btn playstore-style-btn"
+                            onclick="openApkModal('EcoAware AI', 'https://github.com/ishan-walia/ecoaware-ai-app', 'Flutter & Dart', 'fa-leaf')">
+                            <i class="fa-brands fa-google-play"></i>
+                            <span>PLAY STORE</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5: Bhakti Sangeet App -->
+            <div class="project-card" data-category="mobile">
+                <div class="project-header">
+                    <i class="fa-solid fa-music project-icon-large"></i>
+                    <span class="project-tag-badge">ANDROID KOTLIN</span>
+                </div>
+                <div class="project-body">
+                    <h3 class="project-title">Bhakti Sangeet App</h3>
+                    <p class="project-desc">
+                        Peaceful devotional music application built using Kotlin and XML. Includes a custom splash
+                        screen, clean media player UI, and offline bhajan playback.
+                    </p>
+                    <div class="project-tech-stack">
+                        <span class="tech-chip">Kotlin</span>
+                        <span class="tech-chip">Android MediaPlayer</span>
+                        <span class="tech-chip">Custom UI</span>
+                    </div>
+                    <div class="project-footer">
+                        <a href="https://github.com/ishan-walia/Bhakti-Sangeet-App" target="_blank"
+                            class="project-link">
+                            <span>VIEW REPO</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                        <button class="apk-download-btn playstore-style-btn"
+                            onclick="openApkModal('Bhakti Sangeet', 'https://github.com/ishan-walia/Bhakti-Sangeet-App', 'Kotlin & Android Player', 'fa-music')">
+                            <i class="fa-brands fa-google-play"></i>
+                            <span>PLAY STORE</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         7. SKILLS & ARSENAL MATRIX
+         ========================================================================== -->
+    <section id="skills">
+        <div class="section-header">
+            <h2 class="section-title">Skills & Proficiencies</h2>
+        </div>
+
+        <div class="skills-container">
+            <!-- Mobile Engineering Category -->
+            <div class="skill-category-box featured-skill-box">
+                <h3 class="skill-cat-title">
+                    <i class="fa-solid fa-mobile-screen cyan"></i>
+                    <span>Mobile Engineering</span>
+                </h3>
+                <p class="skill-cat-desc">Native & Cross-Platform Android App Development</p>
+
+                <div class="skill-tech-badges-grid">
+                    <span class="tech-badge-item kotlin-badge"><i class="fa-brands fa-android"></i> Kotlin</span>
+                    <span class="tech-badge-item java-badge"><i class="fa-brands fa-java"></i> Java</span>
+                    <span class="tech-badge-item flutter-badge"><i class="fa-brands fa-flutter"></i> Flutter</span>
+                    <span class="tech-badge-item dart-badge"><i class="fa-solid fa-bullseye"></i> Dart</span>
+                    <span class="tech-badge-item firebase-badge"><i class="fa-solid fa-fire"></i> Firebase</span>
+                    <span class="tech-badge-item maps-badge"><i class="fa-solid fa-map-location-dot"></i> Google Maps
+                        API</span>
+                    <span class="tech-badge-item compose-badge"><i class="fa-solid fa-cubes"></i> Jetpack Compose</span>
+                    <span class="tech-badge-item db-badge"><i class="fa-solid fa-database"></i> SQLite / Room DB</span>
+                    <span class="tech-badge-item arch-badge"><i class="fa-solid fa-diagram-project"></i> MVVM
+                        Architecture</span>
+                    <span class="tech-badge-item sec-badge"><i class="fa-solid fa-shield-halved"></i> App Security &
+                        Hardening</span>
+                </div>
+            </div>
+
+            <!-- Cybersecurity & Pentesting Category -->
+            <div class="skill-category-box">
+                <h3 class="skill-cat-title">
+                    <i class="fa-solid fa-shield-virus green"></i>
+                    <span>Cybersecurity & Pentesting</span>
+                </h3>
+                <p class="skill-cat-desc">Network Auditing & Vulnerability Assessment</p>
+
+                <div class="skill-tech-badges-grid">
+                    <span class="tech-badge-item sec-badge"><i class="fa-solid fa-terminal"></i> Nmap Scanning</span>
+                    <span class="tech-badge-item sec-badge"><i class="fa-solid fa-microchip"></i> Wireshark</span>
+                    <span class="tech-badge-item sec-badge"><i class="fa-brands fa-linux"></i> Kali Linux CLI</span>
+                    <span class="tech-badge-item sec-badge"><i class="fa-solid fa-user-shield"></i> Metasploit</span>
+                    <span class="tech-badge-item htb-badge"><img src="images/htb-logo.svg" alt="HTB"
+                            class="htb-badge-logo"> Hack The Box</span>
+                    <span class="tech-badge-item sec-badge"><i class="fa-solid fa-bug"></i> Vulnerability Audit</span>
+                    <span class="tech-badge-item sec-badge"><i class="fa-solid fa-lock"></i> Encryption & Hashing</span>
+                </div>
+            </div>
+
+            <!-- Languages & Core Tools Category -->
+            <div class="skill-category-box">
+                <h3 class="skill-cat-title">
+                    <i class="fa-solid fa-code yellow"></i>
+                    <span>Languages & Core Tools</span>
+                </h3>
+                <p class="skill-cat-desc">Developer Workflows & Automation Tools</p>
+
+                <div class="skill-tech-badges-grid">
+                    <span class="tech-badge-item tool-badge"><i class="fa-brands fa-git-alt"></i> Git & GitHub</span>
+                    <span class="tech-badge-item python-badge"><i class="fa-brands fa-python"></i> Python
+                        Scripting</span>
+                    <span class="tech-badge-item tool-badge"><i class="fa-solid fa-code-merge"></i> REST APIs &
+                        JSON</span>
+                    <span class="tech-badge-item tool-badge"><i class="fa-solid fa-laptop-code"></i> VS Code</span>
+                    <span class="tech-badge-item studio-badge"><i class="fa-brands fa-android"></i> Android
+                        Studio</span>
+                    <span class="tech-badge-item tool-badge"><i class="fa-solid fa-terminal"></i> PowerShell &
+                        Bash</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         8. CONTACT POPUP MODAL (Triggers only on click)
+         ========================================================================== -->
+    <div id="contact-modal" class="apk-modal-overlay" onclick="if(event.target===this)closeContactModal()">
+        <div class="contact-modal-card">
+            <button class="apk-modal-close" onclick="closeContactModal()" aria-label="Close modal"><i
+                    class="fa-solid fa-xmark"></i></button>
+
+            <div class="section-header" style="margin-bottom: 20px; text-align: left;">
+                <span class="section-subtitle">// GET IN TOUCH</span>
+                <h2 class="section-title" style="font-size: 1.8rem;">Let's Connect & Collaborate</h2>
+            </div>
+
+            <div class="contact-wrapper">
+                <div class="contact-info-card">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.3rem; color: #fff; margin-bottom: 20px;">
+                        Contact Information</h3>
+
+                    <div class="contact-info-item">
+                        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div class="contact-detail">
+                            <h4>Email</h4>
+                            <p><a href="mailto:waliaishanipshita@gmail.com">waliaishanipshita@gmail.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
+                        <div class="contact-detail">
+                            <h4>GitHub</h4>
+                            <p><a href="https://github.com/ishan-walia" target="_blank">github.com/ishan-walia</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-icon"><i class="fa-brands fa-youtube"></i></div>
+                        <div class="contact-detail">
+                            <h4>YouTube</h4>
+                            <p><a href="https://www.youtube.com/@hackwithishan" target="_blank">@hackwithishan</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                        <div class="contact-detail">
+                            <h4>LinkedIn</h4>
+                            <p><a href="https://www.linkedin.com/in/ishanwalia"
+                                    target="_blank">linkedin.com/in/ishanwalia</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-icon" style="background: rgba(159, 239, 0, 0.08); border-color: #9fef00;">
+                            <img src="images/hackthebox.png" alt="Hack The Box" style="width: 20px; height: 20px; object-fit: contain;">
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Hack The Box</h4>
+                            <p><a href="https://profile.hackthebox.com/profile/019c3273-a41b-7338-9b6a-7c0cefb77111"
+                                    target="_blank">HTB Profile // Ishan Walia</a></p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-icon" style="background: rgba(255, 46, 81, 0.08); border-color: #ff2e51;">
+                            <img src="images/favicon.png" alt="TryHackMe" style="width: 20px; height: 20px; object-fit: contain;">
+                        </div>
+                        <div class="contact-detail">
+                            <h4>TryHackMe</h4>
+                            <p><a href="https://tryhackme.com/p/Ishanwalia"
+                                    target="_blank">tryhackme.com/p/Ishanwalia</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-card">
+                    <form id="portfolio-contact-form">
+                        <div class="form-group">
+                            <label class="form-label" for="form-name">YOUR NAME</label>
+                            <input type="text" id="form-name" class="form-input" placeholder="e.g. John Doe" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="form-email">YOUR EMAIL</label>
+                            <input type="email" id="form-email" class="form-input" placeholder="e.g. john@example.com"
+                                required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="form-message">MESSAGE</label>
+                            <textarea id="form-message" class="form-textarea"
+                                placeholder="Write your message or inquiry here..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                            <span>SEND MESSAGE</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         8.5 APK DOWNLOAD & MOBILE QR MODAL
+         ========================================================================== -->
+    <div id="apk-modal" class="apk-modal-overlay" onclick="if(event.target===this)closeApkModal()">
+        <div class="apk-modal-card">
+            <button class="apk-modal-close" onclick="closeApkModal()" aria-label="Close modal"><i
+                    class="fa-solid fa-xmark"></i></button>
+
+            <div class="apk-modal-header">
+                <div class="apk-icon-circle" id="modal-app-icon">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                </div>
+                <div>
+                    <h3 id="modal-app-title" class="apk-modal-title">App Name</h3>
+                    <p id="modal-app-tech" class="apk-modal-sub">Android Application • Release Build</p>
+                </div>
+            </div>
+
+            <div class="apk-modal-body">
+                <div class="qr-section">
+                    <div class="qr-frame">
+                        <img id="modal-qr-img" src="" alt="Scan QR Code to Download APK on Phone">
+                    </div>
+                    <p class="qr-caption"><i class="fa-solid fa-qrcode"></i> Scan with Mobile Camera to Install</p>
+                </div>
+
+                <div class="apk-info-section">
+                    <div class="apk-spec-row">
+                        <span><i class="fa-brands fa-android green"></i> Platform:</span>
+                        <strong>Android OS 8.0+</strong>
+                    </div>
+                    <div class="apk-spec-row">
+                        <span><i class="fa-solid fa-code cyan"></i> Technology:</span>
+                        <strong id="modal-app-stack">Kotlin / XML / Flutter</strong>
+                    </div>
+                    <div class="apk-spec-row">
+                        <span><i class="fa-solid fa-shield-check purple"></i> Security:</span>
+                        <strong>Verified Open Source APK</strong>
+                    </div>
+
+                    <div class="apk-action-group">
+                        <a id="modal-apk-btn" href="#" target="_blank" class="btn-primary apk-download-cta">
+                            <i class="fa-brands fa-google-play"></i>
+                            <span>GET ON PLAY STORE / RELEASES</span>
+                        </a>
+
+                        <a id="modal-repo-btn" href="#" target="_blank" class="btn-secondary">
+                            <i class="fa-brands fa-github"></i>
+                            <span>VIEW REPO</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         8.8 INTERACTIVE APP SCREENSHOT DEMO GALLERY MODAL
+         ========================================================================== -->
+    <div id="demo-gallery-modal" class="apk-modal-overlay" onclick="if(event.target===this)closeDemoGallery()">
+        <div class="demo-gallery-card">
+            <button class="apk-modal-close" onclick="closeDemoGallery()" aria-label="Close gallery"><i
+                    class="fa-solid fa-xmark"></i></button>
+
+            <div class="gallery-header">
+                <h3 id="gallery-app-title" class="gallery-title">NetSpyder App Screenshots</h3>
+                <span id="gallery-counter" class="gallery-counter">Image 1 of 4</span>
+            </div>
+
+            <div class="gallery-main-viewport">
+                <button class="gallery-nav-btn prev" onclick="prevGalleryImage()"><i
+                        class="fa-solid fa-chevron-left"></i></button>
+                <div class="gallery-img-container">
+                    <img id="gallery-main-img" src="" alt="App Demo Screenshot">
+                </div>
+                <button class="gallery-nav-btn next" onclick="nextGalleryImage()"><i
+                        class="fa-solid fa-chevron-right"></i></button>
+            </div>
+
+            <div class="gallery-thumbnails-strip" id="gallery-thumbs"></div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         9. FOOTER
+         ========================================================================== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-socials">
+                <a href="https://github.com/ishan-walia" target="_blank" class="social-icon-btn github-social-btn"
+                    title="GitHub Profile">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/ishanwalia" target="_blank"
+                    class="social-icon-btn linkedin-social-btn" title="LinkedIn Profile">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.youtube.com/@hackwithishan" target="_blank"
+                    class="social-icon-btn youtube-social-btn" title="YouTube Channel">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://profile.hackthebox.com/profile/019c3273-a41b-7338-9b6a-7c0cefb77111" target="_blank"
+                    class="social-icon-btn htb-social-btn" title="Hack The Box Profile">
+                    <img src="images/hackthebox.png" alt="Hack The Box" class="htb-footer-logo" style="width: 19px; height: 19px; object-fit: contain;">
+                </a>
+                <a href="https://tryhackme.com/p/Ishanwalia" target="_blank"
+                    class="social-icon-btn thm-social-btn" title="TryHackMe Profile">
+                    <img src="images/favicon.png" alt="TryHackMe" class="thm-footer-logo" style="width: 19px; height: 19px; object-fit: contain;">
+                </a>
+                <a href="mailto:waliaishanipshita@gmail.com" class="social-icon-btn email-social-btn" title="Direct Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+
+            <div class="footer-text">
+                Designed & Developed by <span>Ishan Walia</span> // Cybersecurity & Mobile App Developer
+            </div>
+            <div style="font-family: var(--font-code); font-size: 0.8rem; color: var(--text-dim);">
+                © 2026 Ishan Walia. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript File -->
+    <script src="script.js?v=8.0"></script>
+</body>
+
+</html>

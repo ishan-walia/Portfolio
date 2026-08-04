@@ -1,0 +1,76 @@
+/* ==========================================================================
+   DESIGN SYSTEM VARIABLES & THEME TOKENS
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --bg-dark: #07080c;
+    --bg-card: rgba(14, 17, 26, 0.7);
+    --bg-card-hover: rgba(22, 27, 42, 0.85);
+    --bg-terminal: #0a0d14;
+    
+    --matrix-green: #00ff9d;
+    --matrix-green-glow: rgba(0, 255, 157, 0.4);
+    --cyber-cyan: #00f0ff;
+    --cyber-cyan-glow: rgba(0, 240, 255, 0.35);
+    --neon-purple: #9d4edd;
+    --neon-purple-glow: rgba(157, 78, 221, 0.4);
+    --accent-red: #ff3366;
+    
+    --text-main: #f0f4f8;
+    --text-muted: #8a99ad;
+    --text-dim: #516175;
+    
+    --border-glass: rgba(255, 255, 255, 0.08);
+    --border-glow-green: rgba(0, 255, 157, 0.3);
+    --border-glow-cyan: rgba(0, 240, 255, 0.3);
+    
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-code: 'JetBrains Mono', monospace;
+    
+    --transition-fast: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background: transparent;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #040508;
+}
+::-webkit-scrollbar-thumb {
+    background: #182030;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 255, 157, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--matrix-green);
+    box-shadow: 0 0 10px var(--matrix-green);
+}
+
+::selection {
+    background: var(--matrix-green);
+    color: #000;
+}
