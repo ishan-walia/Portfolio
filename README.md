@@ -134,6 +134,8 @@ python -m http.server 8080
 Open `http://localhost:8080` in your web browser!
 
 ---
+## 👨‍💻 About Me
+Cybersecurity enthusiast and mobile application developer focused on building practical Android/Flutter applications and exploring network, web, and mobile security. I enjoy creating security-focused tools, solving CTF challenges, and turning cybersecurity concepts into real-world projects.
 
 <div align="center">
 
