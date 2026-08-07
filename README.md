@@ -85,6 +85,7 @@
 🔴 Red Hat System Administration I (RH124)
 ☁️ Oracle Cloud Infrastructure – AI Foundations Associate
 🗄️ Oracle Data Platform – Foundations Associate
+🔐 Mastercard Cybersecurity Job Simulation – Forage
 
 
 
