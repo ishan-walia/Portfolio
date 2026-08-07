@@ -80,6 +80,12 @@
 
 ---
 
+## 🏆 Certifications & Achievements
+🛡️ Certified LLM Security Professional (CLLMSP)
+🔴 Red Hat System Administration I (RH124)
+☁️ Oracle Cloud Infrastructure – AI Foundations Associate
+
+
 ## 📁 Repository Codebase Structure
 
 ```
