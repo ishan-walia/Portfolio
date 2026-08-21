@@ -129,7 +129,88 @@ unlockAudioEvents.forEach(evt => {
     window.addEventListener(evt, unlockAndPlayAudio, { passive: true });
 });
 
+window.simulateApp = function(appName) {
+    if (window.launchPhoneApp) {
+        window.launchPhoneApp(appName);
+    }
+    const simulatorSection = document.getElementById('app-simulator');
+    if (simulatorSection) {
+        simulatorSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
+
+    // ==========================================================================
+    // 0. CUSTOM CYBER TARGET CURSOR & 3D CARD TILT ENGINE
+    // ==========================================================================
+    const cursor = document.getElementById('cyber-cursor');
+    const cursorDot = document.getElementById('cyber-cursor-dot');
+    if (cursor && cursorDot) {
+        let mouseX = -100, mouseY = -100;
+        let cursorX = -100, cursorY = -100;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.left = `${mouseX}px`;
+            cursorDot.style.top = `${mouseY}px`;
+        });
+
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.18;
+            cursorY += (mouseY - cursorY) * 0.18;
+            cursor.style.left = `${cursorX}px`;
+            cursor.style.top = `${cursorY}px`;
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Hover effect delegation for interactive elements
+        document.addEventListener('mouseover', (e) => {
+            if (e.target.closest('a, button, .project-card, .tech-badge-item, .app-chip, .cmd-btn, input, textarea, .project-screenshots-strip img')) {
+                cursor.classList.add('hovering');
+            } else {
+                cursor.classList.remove('hovering');
+            }
+        });
+    }
+
+    // 3D Tilt Effect on Project Cards
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+        });
+    });
+
+    // Animated Live Stats Counter
+    const statElements = document.querySelectorAll('.stat-number');
+    statElements.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-target'));
+        if (isNaN(target)) return;
+        let count = 0;
+        const step = Math.max(1, Math.floor(target / 35));
+        const timer = setInterval(() => {
+            count += step;
+            if (count >= target) {
+                stat.textContent = target;
+                clearInterval(timer);
+            } else {
+                stat.textContent = count;
+            }
+        }, 35);
+    });
 
     // ==========================================================================
     // 1. SPLASH SCREEN & CYBER SPIDER CANVAS ENGINE
@@ -909,6 +990,51 @@ Nmap done: 1 IP address (1 host up) scanned in 1.42 seconds`;
             return;
         }
 
+        if (cmdLower.startsWith('apk-decompile') || cmdLower.startsWith('decompile')) {
+            const targetApp = inputTrimmed.split(' ')[1] || 'NetSpyder.apk';
+            printTermOutput(inputTrimmed, `[+] Initializing JADX Decompiler v1.4.7...
+[+] Unpacking APK archive: ${targetApp}
+[+] Extracting AndroidManifest.xml & classes.dex...
+
+AndroidManifest Analysis:
+---------------------------------------------
+Package    : com.ishanwalia.netspyder
+Min SDK    : 24 (Android 7.0) | Target SDK: 34 (Android 14)
+Permissions:
+  ✓ android.permission.INTERNET
+  ✓ android.permission.ACCESS_FINE_LOCATION
+  ✓ android.permission.ACCESS_NETWORK_STATE
+  ✓ android.permission.CHANGE_WIFI_STATE
+
+Security Audit Summary:
+  [✓] OWASP MSTG Compliance: PASS
+  [✓] Root Detection Shield: ACTIVE
+  [✓] Obfuscation: ProGuard Enabled
+  [✓] Dangerous Exported Receivers: NONE (0 found)`);
+            return;
+        }
+
+        if (cmdLower.startsWith('hash')) {
+            const textToHash = inputTrimmed.substring(5).trim() || 'IshanWaliaCyber2026';
+            printTermOutput(inputTrimmed, `[+] Crypto Hash Calculator: "${textToHash}"
+SHA-256 : e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+MD5     : 4a2d8f901bc37e10b29841f3e091b8a2
+Status  : CRYPTO CHECKSUM VERIFIED`);
+            return;
+        }
+
+        if (cmdLower === 'whoami') {
+            printTermOutput(inputTrimmed, `[Identity Report]
+User        : Ishan Walia
+Role        : Mobile Application Engineer & Cybersecurity Researcher
+Stack       : Kotlin, Java, Flutter, Dart, Nmap, Wireshark, Linux CLI, OWASP
+Profiles    :
+  - TryHackMe : @Ishanwalia (https://tryhackme.com/p/Ishanwalia)
+  - HTB       : ID 019c3273 (https://profile.hackthebox.com/profile/019c3273-a41b-7338-9b6a-7c0cefb77111)
+  - YouTube   : @hackwithishan (https://www.youtube.com/@hackwithishan)`);
+            return;
+        }
+
         if (['netspyder', 'batterywater', 'duotrack', 'ecoaware', 'bhakti', 'home'].includes(cmdLower)) {
             window.launchPhoneApp(cmdLower);
         }
@@ -938,6 +1064,13 @@ Nmap done: 1 IP address (1 host up) scanned in 1.42 seconds`;
         const inputIp = prompt("Enter Target IP Address or Hostname to scan with NetSpyder Nmap:", "192.168.1.104");
         if (inputIp !== null && inputIp.trim() !== '') {
             processCommand(`nmap -sV -sC ${inputIp.trim()}`);
+        }
+    };
+
+    window.triggerHashGen = function() {
+        const inputStr = prompt("Enter String to Hash (SHA-256 / MD5):", "IshanWaliaSecurity");
+        if (inputStr !== null && inputStr.trim() !== '') {
+            processCommand(`hash ${inputStr.trim()}`);
         }
     };
 

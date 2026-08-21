@@ -25,6 +25,10 @@
 
 <body>
 
+    <!-- Custom Cyber Target Cursor Engine -->
+    <div id="cyber-cursor"></div>
+    <div id="cyber-cursor-dot"></div>
+
     <!-- ==========================================================================
          1. CUSTOM CYBER-SPIDER SPLASH SCREEN ANIMATION
          ========================================================================== -->
@@ -123,6 +127,26 @@
                         <span>GET IN TOUCH</span>
                     </button>
                 </div>
+
+                <!-- Live Engineer Stats Dashboard -->
+                <div class="hero-stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-num-box"><span class="stat-number" data-target="5">5</span><span class="stat-plus">+</span></div>
+                        <span class="stat-label">Mobile Apps Built</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num-box"><span class="stat-number" data-target="100">100</span><span class="stat-plus">+</span></div>
+                        <span class="stat-label">Security Audits Done</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num-box"><span class="stat-number" data-target="100">100</span><span class="stat-plus">%</span></div>
+                        <span class="stat-label">OWASP Compliant</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-num-box"><span class="stat-number">24/7</span></div>
+                        <span class="stat-label">Workstation Uptime</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -161,7 +185,13 @@
 
                 <div class="quick-cmds">
                     <button class="cmd-btn" onclick="triggerInteractiveNmapScan()"><i
-                            class="fa-solid fa-crosshairs green"></i> target port scan</button>
+                            class="fa-solid fa-crosshairs green"></i> nmap scan</button>
+                    <button class="cmd-btn" onclick="executeQuickCmd('apk-decompile netspyder')"><i
+                            class="fa-solid fa-bug cyan"></i> apk-decompile</button>
+                    <button class="cmd-btn" onclick="triggerHashGen()"><i
+                            class="fa-solid fa-key yellow"></i> hash generator</button>
+                    <button class="cmd-btn" onclick="executeQuickCmd('whoami')"><i
+                            class="fa-solid fa-user-shield purple"></i> whoami</button>
                     <button class="cmd-btn" onclick="executeQuickCmd('clear')"><i class="fa-solid fa-eraser"></i>
                         clear</button>
                 </div>
@@ -375,45 +405,79 @@
          ========================================================================== -->
     <section id="about">
         <div class="section-header">
-            <h2 class="section-title">Mobile Engineering Meets Cybersecurity</h2>
+            <span class="section-subtitle">// CORE DUAL SPECIALIZATION</span>
+            <h2 class="section-title">Mobile Engineering Meets Cybersecurity Research</h2>
         </div>
 
         <div class="about-grid">
             <!-- Mobile App Dev Card -->
             <div class="spec-card">
                 <div class="spec-icon">
-                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <i class="fa-solid fa-mobile-screen-button cyan"></i>
                 </div>
-                <h3 class="spec-title">Mobile App Development</h3>
+                <h3 class="spec-title">Native Android & Flutter Engineering</h3>
                 <p class="spec-desc">
-                    Specialized in native Android (Kotlin/Java) and cross-platform Flutter development. I build
-                    intuitive, performant apps with offline-first support, live GPS tracking, audio players, and REST
-                    API integrations.
+                    Specialized in building production-ready mobile apps using Kotlin & Dart. I engineer offline-first architecture, background location sync, audio engines, and clean MVVM design patterns.
                 </p>
                 <ul class="spec-list">
-                    <li><i class="fa-solid fa-check"></i> Native Android (Kotlin, XML, Jetpack)</li>
-                    <li><i class="fa-solid fa-check"></i> Cross-Platform Apps (Flutter & Dart)</li>
-                    <li><i class="fa-solid fa-check"></i> Real-time Database & Firebase Integration</li>
-                    <li><i class="fa-solid fa-check"></i> Clean UI/UX & Responsive Layouts</li>
+                    <li><i class="fa-solid fa-check green"></i> Native Kotlin & Jetpack (Coroutines, Room DB, Retrofit)</li>
+                    <li><i class="fa-solid fa-check green"></i> Flutter & Dart (State Management, MethodChannels)</li>
+                    <li><i class="fa-solid fa-check green"></i> Realtime Sync (Firebase, Google Maps API, WebSockets)</li>
+                    <li><i class="fa-solid fa-check green"></i> OWASP Mobile Top 10 Hardening & SSL Pinning</li>
                 </ul>
             </div>
 
             <!-- Cybersecurity Card -->
             <div class="spec-card cyber">
                 <div class="spec-icon">
-                    <i class="fa-solid fa-user-shield"></i>
+                    <i class="fa-solid fa-user-shield green"></i>
                 </div>
                 <h3 class="spec-title">Cybersecurity & Security Audit</h3>
                 <p class="spec-desc">
-                    Active Cybersecurity researcher and student focusing on network penetration testing, application
-                    vulnerability assessment, Wireshark packet capture, and security tool development.
+                    Active Cybersecurity researcher focusing on Android APK reverse engineering, network packet sniffer tooling, Nmap subnet audits, and ethical hacking tutorials.
                 </p>
                 <ul class="spec-list">
-                    <li><i class="fa-solid fa-check"></i> Mobile & Network Vulnerability Assessment</li>
-                    <li><i class="fa-solid fa-check"></i> Linux Security CLI Tool Development</li>
-                    <li><i class="fa-solid fa-check"></i> Wireshark & Nmap Network Analysis</li>
-                    <li><i class="fa-solid fa-check"></i> Educational Content on YouTube (@hackwithishan)</li>
+                    <li><i class="fa-solid fa-check green"></i> Android APK Static/Dynamic Analysis (JADX, Frida, APKTool)</li>
+                    <li><i class="fa-solid fa-check green"></i> Network Auditing (Nmap, Wireshark, ARP Inspection)</li>
+                    <li><i class="fa-solid fa-check green"></i> Custom Linux/Kotlin Security CLI Tool Development</li>
+                    <li><i class="fa-solid fa-check green"></i> Content & Tutorials on YouTube (@hackwithishan)</li>
                 </ul>
+            </div>
+        </div>
+
+        <!-- Verified Security Profiles Bar -->
+        <div class="security-profiles-card">
+            <div class="profiles-header">
+                <i class="fa-solid fa-shield-halved green"></i>
+                <span>VERIFIED PENTESTING & SOCIAL PROFILES</span>
+            </div>
+            <div class="profiles-badges-flex">
+                <a href="https://tryhackme.com/p/Ishanwalia" target="_blank" class="cyber-profile-badge thm">
+                    <img src="images/favicon.png" alt="TryHackMe" class="badge-icon">
+                    <div class="badge-info">
+                        <span class="badge-title">TryHackMe Profile</span>
+                        <span class="badge-sub">@Ishanwalia • Active Player</span>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+
+                <a href="https://profile.hackthebox.com/profile/019c3273-a41b-7338-9b6a-7c0cefb77111" target="_blank" class="cyber-profile-badge htb">
+                    <img src="images/hackthebox.png" alt="HackTheBox" class="badge-icon">
+                    <div class="badge-info">
+                        <span class="badge-title">HackTheBox Profile</span>
+                        <span class="badge-sub">ID: 019c3273 • CTF Labs</span>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+
+                <a href="https://www.youtube.com/@hackwithishan" target="_blank" class="cyber-profile-badge yt">
+                    <i class="fa-brands fa-youtube badge-icon-yt"></i>
+                    <div class="badge-info">
+                        <span class="badge-title">YouTube Channel</span>
+                        <span class="badge-sub">@hackwithishan • Cyber Guides</span>
+                    </div>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -421,9 +485,13 @@
     <!-- ==========================================================================
          6. FEATURED PROJECTS SHOWCASE
          ========================================================================== -->
+    <!-- ==========================================================================
+         6. FEATURED PROJECTS SHOWCASE
+         ========================================================================== -->
     <section id="projects">
         <div class="section-header">
-            <h2 class="section-title">Projects & Repositories</h2>
+            <span class="section-subtitle">// FEATURED REPOSITORIES & LAB WORK</span>
+            <h2 class="section-title">Projects & Software Arsenal</h2>
         </div>
 
         <div class="projects-filter-bar">
@@ -436,6 +504,7 @@
         <div class="projects-grid">
             <!-- Project 1: NetSpyder App -->
             <div class="project-card" data-category="cyber mobile">
+                <div class="card-shine-effect"></div>
                 <div class="project-header">
                     <img src="images/netspyder-logo.png" alt="NetSpyder App Logo" class="project-card-logo-img">
                     <span class="project-tag-badge">FLAGSHIP SECURITY</span>
@@ -444,8 +513,15 @@
                     <h3 class="project-title">NetSpyder App</h3>
                     <p class="project-desc">
                         A network security auditing and inspection mobile application for Android. Designed to analyze
-                        active network nodes, port scans, and device discovery.
+                        active network nodes, port scans, ARP pinging, and device discovery in real-time.
                     </p>
+
+                    <!-- Key Metrics Pills -->
+                    <div class="project-metrics-row">
+                        <span class="metric-pill green"><i class="fa-solid fa-shield-halved"></i> 100+ Network Scans</span>
+                        <span class="metric-pill cyan"><i class="fa-solid fa-bolt"></i> Port Scan Engine</span>
+                    </div>
+
                     <div class="project-tech-stack">
                         <span class="tech-chip">Kotlin</span>
                         <span class="tech-chip">Android SDK</span>
@@ -455,8 +531,7 @@
 
                     <!-- Inline App Demo Screenshots Showcase -->
                     <div class="project-demo-section">
-                        <div class="demo-section-label"><i class="fa-solid fa-mobile-screen green"></i> APP SCREENSHOTS
-                            DEMO</div>
+                        <div class="demo-section-label"><i class="fa-solid fa-mobile-screen green"></i> APP SCREENSHOTS DEMO</div>
                         <div class="project-screenshots-strip">
                             <img src="images/netspyder/1.jpeg" alt="NetSpyder Demo 1"
                                 onclick="openDemoGallery('NetSpyder App', ['images/netspyder/1.jpeg', 'images/netspyder/2.jpeg', 'images/netspyder/3.jpeg', 'images/netspyder/4.jpeg'], 0)"
@@ -474,21 +549,28 @@
                     </div>
 
                     <div class="project-footer">
-                        <a href="https://github.com/ishan-walia/NetSpyder-App" target="_blank" class="project-link">
-                            <span>VIEW REPO</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
-                        <a href="https://play.google.com/store/apps/details?id=com.ishanwalia.netspyder&pcampaignid=web_share"
-                            target="_blank" class="apk-download-btn playstore-style-btn">
-                            <i class="fa-brands fa-google-play"></i>
-                            <span>PLAY STORE</span>
-                        </a>
+                        <button class="simulate-app-btn" onclick="window.simulateApp('netspyder')" title="Test this app in live 3D phone screen">
+                            <i class="fa-solid fa-gamepad"></i>
+                            <span>TRY IN SIMULATOR</span>
+                        </button>
+                        <div class="footer-link-group">
+                            <a href="https://github.com/ishan-walia/NetSpyder-App" target="_blank" class="project-link">
+                                <span>REPO</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.ishanwalia.netspyder&pcampaignid=web_share"
+                                target="_blank" class="apk-download-btn playstore-style-btn">
+                                <i class="fa-brands fa-google-play"></i>
+                                <span>PLAY STORE</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Project 2: Battery Water App -->
             <div class="project-card" data-category="mobile">
+                <div class="card-shine-effect"></div>
                 <div class="project-header">
                     <img src="images/batterywater-logo.png" alt="Battery Water App Logo" class="project-card-logo-img">
                     <span class="project-tag-badge">HARDWARE & MONITORING</span>
@@ -497,8 +579,15 @@
                     <h3 class="project-title">Battery Water App</h3>
                     <p class="project-desc">
                         An Android mobile application for monitoring battery water levels, voltage health metrics, and
-                        automated maintenance refill reminders.
+                        automated maintenance refill reminders via local notifications.
                     </p>
+
+                    <!-- Key Metrics Pills -->
+                    <div class="project-metrics-row">
+                        <span class="metric-pill cyan"><i class="fa-solid fa-bell"></i> 18-Day Reminders</span>
+                        <span class="metric-pill green"><i class="fa-solid fa-heart-pulse"></i> 98% Health Tracking</span>
+                    </div>
+
                     <div class="project-tech-stack">
                         <span class="tech-chip">Kotlin</span>
                         <span class="tech-chip">Android SDK</span>
@@ -508,8 +597,7 @@
 
                     <!-- Inline App Demo Screenshots Showcase -->
                     <div class="project-demo-section">
-                        <div class="demo-section-label"><i class="fa-solid fa-mobile-screen cyan"></i> APP SCREENSHOTS
-                            DEMO</div>
+                        <div class="demo-section-label"><i class="fa-solid fa-mobile-screen cyan"></i> APP SCREENSHOTS DEMO</div>
                         <div class="project-screenshots-strip">
                             <img src="images/batterywater/batt1.jpeg" alt="Battery Water Demo 1"
                                 onclick="openDemoGallery('Battery Water App', ['images/batterywater/batt1.jpeg', 'images/batterywater/batt2.jpeg', 'images/batterywater/batt3.jpeg', 'images/batterywater/batt4.jpeg', 'images/batterywater/batt5.jpeg', 'images/batterywater/batt6.jpeg', 'images/batterywater/batt7.jpeg'], 0)"
@@ -526,33 +614,34 @@
                             <img src="images/batterywater/batt5.jpeg" alt="Battery Water Demo 5"
                                 onclick="openDemoGallery('Battery Water App', ['images/batterywater/batt1.jpeg', 'images/batterywater/batt2.jpeg', 'images/batterywater/batt3.jpeg', 'images/batterywater/batt4.jpeg', 'images/batterywater/batt5.jpeg', 'images/batterywater/batt6.jpeg', 'images/batterywater/batt7.jpeg'], 4)"
                                 title="Click to view full image">
-                            <img src="images/batterywater/batt6.jpeg" alt="Battery Water Demo 6"
-                                onclick="openDemoGallery('Battery Water App', ['images/batterywater/batt1.jpeg', 'images/batterywater/batt2.jpeg', 'images/batterywater/batt3.jpeg', 'images/batterywater/batt4.jpeg', 'images/batterywater/batt5.jpeg', 'images/batterywater/batt6.jpeg', 'images/batterywater/batt7.jpeg'], 5)"
-                                title="Click to view full image">
-                            <img src="images/batterywater/batt7.jpeg" alt="Battery Water Demo 7"
-                                onclick="openDemoGallery('Battery Water App', ['images/batterywater/batt1.jpeg', 'images/batterywater/batt2.jpeg', 'images/batterywater/batt3.jpeg', 'images/batterywater/batt4.jpeg', 'images/batterywater/batt5.jpeg', 'images/batterywater/batt6.jpeg', 'images/batterywater/batt7.jpeg'], 6)"
-                                title="Click to view full image">
                         </div>
                     </div>
 
                     <div class="project-footer">
-                        <a href="https://github.com/ishan-walia" target="_blank" class="project-link">
-                            <span>VIEW REPO</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
-                        <a href="https://play.google.com/store/apps/details?id=com.ishan.batterywater" target="_blank"
-                            class="apk-download-btn playstore-style-btn">
-                            <i class="fa-brands fa-google-play"></i>
-                            <span>PLAY STORE</span>
-                        </a>
+                        <button class="simulate-app-btn" onclick="window.simulateApp('batterywater')" title="Test this app in live 3D phone screen">
+                            <i class="fa-solid fa-gamepad"></i>
+                            <span>TRY IN SIMULATOR</span>
+                        </button>
+                        <div class="footer-link-group">
+                            <a href="https://github.com/ishan-walia" target="_blank" class="project-link">
+                                <span>REPO</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                            <a href="https://play.google.com/store/apps/details?id=com.ishan.batterywater" target="_blank"
+                                class="apk-download-btn playstore-style-btn">
+                                <i class="fa-brands fa-google-play"></i>
+                                <span>PLAY STORE</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Project 3: DuoTrack App -->
             <div class="project-card" data-category="mobile">
+                <div class="card-shine-effect"></div>
                 <div class="project-header">
-                    <i class="fa-solid fa-location-dot project-icon-large"></i>
+                    <i class="fa-solid fa-location-dot project-icon-large purple"></i>
                     <span class="project-tag-badge">GPS & FIREBASE</span>
                 </div>
                 <div class="project-body">
@@ -561,30 +650,45 @@
                         Real-time GPS location sharing application with Google Maps API integration, background tracking
                         service, Firebase synchronization, and auto-reconnect fallback.
                     </p>
+
+                    <!-- Key Metrics Pills -->
+                    <div class="project-metrics-row">
+                        <span class="metric-pill purple"><i class="fa-solid fa-satellite-dish"></i> 4m GPS Accuracy</span>
+                        <span class="metric-pill cyan"><i class="fa-solid fa-fire"></i> Firebase Realtime</span>
+                    </div>
+
                     <div class="project-tech-stack">
                         <span class="tech-chip">Kotlin</span>
                         <span class="tech-chip">Firebase</span>
                         <span class="tech-chip">Google Maps API</span>
                         <span class="tech-chip">Background Service</span>
                     </div>
+
                     <div class="project-footer">
-                        <a href="https://github.com/ishan-walia/DuoTrack-App" target="_blank" class="project-link">
-                            <span>VIEW REPO</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
-                        <button class="apk-download-btn playstore-style-btn"
-                            onclick="openApkModal('DuoTrack App', 'https://github.com/ishan-walia/DuoTrack-App', 'Kotlin & Firebase Maps', 'fa-location-dot')">
-                            <i class="fa-brands fa-google-play"></i>
-                            <span>PLAY STORE</span>
+                        <button class="simulate-app-btn" onclick="window.simulateApp('duotrack')" title="Test this app in live 3D phone screen">
+                            <i class="fa-solid fa-gamepad"></i>
+                            <span>TRY IN SIMULATOR</span>
                         </button>
+                        <div class="footer-link-group">
+                            <a href="https://github.com/ishan-walia/DuoTrack-App" target="_blank" class="project-link">
+                                <span>REPO</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                            <button class="apk-download-btn playstore-style-btn"
+                                onclick="openApkModal('DuoTrack App', 'https://github.com/ishan-walia/DuoTrack-App', 'Kotlin & Firebase Maps', 'fa-location-dot')">
+                                <i class="fa-brands fa-google-play"></i>
+                                <span>PLAY STORE</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Project 4: EcoAware AI App -->
             <div class="project-card" data-category="ai mobile">
+                <div class="card-shine-effect"></div>
                 <div class="project-header">
-                    <i class="fa-solid fa-leaf project-icon-large"></i>
+                    <i class="fa-solid fa-leaf project-icon-large green"></i>
                     <span class="project-tag-badge">FLUTTER & AI</span>
                 </div>
                 <div class="project-body">
@@ -593,30 +697,45 @@
                         Domain-specific generative AI application engineered with Flutter to promote environmental
                         awareness via AI chatbot interactions, waste recognition, and green campaign creation.
                     </p>
+
+                    <!-- Key Metrics Pills -->
+                    <div class="project-metrics-row">
+                        <span class="metric-pill green"><i class="fa-solid fa-robot"></i> Generative AI Chat</span>
+                        <span class="metric-pill cyan"><i class="fa-brands fa-flutter"></i> Flutter Cross-Platform</span>
+                    </div>
+
                     <div class="project-tech-stack">
                         <span class="tech-chip">Flutter</span>
                         <span class="tech-chip">Dart</span>
                         <span class="tech-chip">Generative AI API</span>
                         <span class="tech-chip">Cross-Platform</span>
                     </div>
+
                     <div class="project-footer">
-                        <a href="https://github.com/ishan-walia/ecoaware-ai-app" target="_blank" class="project-link">
-                            <span>VIEW REPO</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
-                        <button class="apk-download-btn playstore-style-btn"
-                            onclick="openApkModal('EcoAware AI', 'https://github.com/ishan-walia/ecoaware-ai-app', 'Flutter & Dart', 'fa-leaf')">
-                            <i class="fa-brands fa-google-play"></i>
-                            <span>PLAY STORE</span>
+                        <button class="simulate-app-btn" onclick="window.simulateApp('ecoaware')" title="Test this app in live 3D phone screen">
+                            <i class="fa-solid fa-gamepad"></i>
+                            <span>TRY IN SIMULATOR</span>
                         </button>
+                        <div class="footer-link-group">
+                            <a href="https://github.com/ishan-walia/ecoaware-ai-app" target="_blank" class="project-link">
+                                <span>REPO</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                            <button class="apk-download-btn playstore-style-btn"
+                                onclick="openApkModal('EcoAware AI', 'https://github.com/ishan-walia/ecoaware-ai-app', 'Flutter & Dart', 'fa-leaf')">
+                                <i class="fa-brands fa-google-play"></i>
+                                <span>PLAY STORE</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Project 5: Bhakti Sangeet App -->
             <div class="project-card" data-category="mobile">
+                <div class="card-shine-effect"></div>
                 <div class="project-header">
-                    <i class="fa-solid fa-music project-icon-large"></i>
+                    <i class="fa-solid fa-music project-icon-large yellow"></i>
                     <span class="project-tag-badge">ANDROID KOTLIN</span>
                 </div>
                 <div class="project-body">
@@ -625,22 +744,36 @@
                         Peaceful devotional music application built using Kotlin and XML. Includes a custom splash
                         screen, clean media player UI, and offline bhajan playback.
                     </p>
+
+                    <!-- Key Metrics Pills -->
+                    <div class="project-metrics-row">
+                        <span class="metric-pill yellow"><i class="fa-solid fa-compact-disc"></i> Offline Audio Engine</span>
+                        <span class="metric-pill green"><i class="fa-brands fa-android"></i> Custom Kotlin UI</span>
+                    </div>
+
                     <div class="project-tech-stack">
                         <span class="tech-chip">Kotlin</span>
                         <span class="tech-chip">Android MediaPlayer</span>
                         <span class="tech-chip">Custom UI</span>
                     </div>
+
                     <div class="project-footer">
-                        <a href="https://github.com/ishan-walia/Bhakti-Sangeet-App" target="_blank"
-                            class="project-link">
-                            <span>VIEW REPO</span>
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
-                        <button class="apk-download-btn playstore-style-btn"
-                            onclick="openApkModal('Bhakti Sangeet', 'https://github.com/ishan-walia/Bhakti-Sangeet-App', 'Kotlin & Android Player', 'fa-music')">
-                            <i class="fa-brands fa-google-play"></i>
-                            <span>PLAY STORE</span>
+                        <button class="simulate-app-btn" onclick="window.simulateApp('bhakti')" title="Test this app in live 3D phone screen">
+                            <i class="fa-solid fa-gamepad"></i>
+                            <span>TRY IN SIMULATOR</span>
                         </button>
+                        <div class="footer-link-group">
+                            <a href="https://github.com/ishan-walia/Bhakti-Sangeet-App" target="_blank"
+                                class="project-link">
+                                <span>REPO</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                            <button class="apk-download-btn playstore-style-btn"
+                                onclick="openApkModal('Bhakti Sangeet', 'https://github.com/ishan-walia/Bhakti-Sangeet-App', 'Kotlin & Android Player', 'fa-music')">
+                                <i class="fa-brands fa-google-play"></i>
+                                <span>PLAY STORE</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -720,6 +853,84 @@
                         Studio</span>
                     <span class="tech-badge-item tool-badge"><i class="fa-solid fa-terminal"></i> PowerShell &
                         Bash</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         7.5 CERTIFICATIONS & EXPERTISE CREDENTIALS
+         ========================================================================== -->
+    <!-- ==========================================================================
+         7.5 FEATURED CREDENTIALS & LICENSES
+         ========================================================================== -->
+    <section id="certifications">
+        <div class="section-header">
+            <span class="section-subtitle">// FEATURED LICENSES & CREDENTIALS</span>
+            <h2 class="section-title">Certifications & CTF Benchmarks</h2>
+        </div>
+
+        <div class="certs-grid certs-grid-3">
+            <!-- 1. Certified LLM Security Professional -->
+            <div class="cert-card featured">
+                <div class="cert-badge-icon redteam-bg"><i class="fa-solid fa-robot cyan"></i></div>
+                <div class="cert-details">
+                    <div class="cert-header-row">
+                        <span class="cert-issuer">RED TEAM LEADERS</span>
+                        <span class="cert-date">Issued Jun 2026</span>
+                    </div>
+                    <h3 class="cert-name">Certified LLM Security Professional (CLLMSP)</h3>
+                    <p class="cert-desc">Specialized in Large Language Model vulnerability auditing, prompt injection defense, AI red teaming, and model security analysis.</p>
+
+                    <!-- Certificate Photo Preview Thumbnail -->
+                    <div class="cert-photo-preview" onclick="openDemoGallery('Certified LLM Security Professional', ['images/certifitions/llmsecurity professional .png'], 0)" title="Click to view full certificate photo">
+                        <img src="images/certifitions/llmsecurity professional .png" alt="LLM Security Certificate Photo" class="cert-img-thumb">
+                        <div class="cert-img-overlay"><i class="fa-solid fa-expand"></i> VIEW CERTIFICATE PHOTO</div>
+                    </div>
+
+                    <div class="cert-skill-tag"><i class="fa-solid fa-shield-virus green"></i> Skills: LLM Security & Red Teaming</div>
+                </div>
+            </div>
+
+            <!-- 2. HackTheBox RHC Conference 2026 CTF -->
+            <div class="cert-card featured">
+                <div class="cert-badge-icon htb-bg"><img src="images/htb-logo.svg" alt="HTB" class="htb-cert-logo"></div>
+                <div class="cert-details">
+                    <div class="cert-header-row">
+                        <span class="cert-issuer">HACKTHEBOX</span>
+                        <span class="cert-date">2026 Conference CTF</span>
+                    </div>
+                    <h3 class="cert-name">RHC Conference 2026 - Capture The Flag</h3>
+                    <p class="cert-desc">Capture The Flag competition covering web exploitation, Android binary reverse engineering, memory corruption, and cryptography.</p>
+
+                    <!-- Certificate Photo Preview Thumbnail -->
+                    <div class="cert-photo-preview" onclick="openDemoGallery('RHC Conference 2026 CTF - HackTheBox', ['images/certifitions/hackthebox.png'], 0)" title="Click to view full certificate photo">
+                        <img src="images/certifitions/hackthebox.png" alt="HackTheBox CTF Certificate Photo" class="cert-img-thumb">
+                        <div class="cert-img-overlay"><i class="fa-solid fa-expand"></i> VIEW CERTIFICATE PHOTO</div>
+                    </div>
+
+                    <div class="cert-skill-tag"><i class="fa-solid fa-flag yellow"></i> Skills: CTF, Reverse Engineering, Web Security</div>
+                </div>
+            </div>
+
+            <!-- 3. TryHackMe Hacker Holidays -->
+            <div class="cert-card featured">
+                <div class="cert-badge-icon thm-bg"><img src="images/favicon.png" alt="THM" class="thm-cert-logo"></div>
+                <div class="cert-details">
+                    <div class="cert-header-row">
+                        <span class="cert-issuer">TRYHACKME</span>
+                        <span class="cert-date">Issued Aug 2026</span>
+                    </div>
+                    <h3 class="cert-name">Hacker Holidays Completion Certificate</h3>
+                    <p class="cert-desc">Credential ID: <code>THM-Q5AGEXHJ4P</code> • Offensive security, network penetration testing, and machine compromise labs.</p>
+
+                    <!-- Certificate Photo Preview Thumbnail -->
+                    <div class="cert-photo-preview" onclick="openDemoGallery('Hacker Holidays Certificate - TryHackMe', ['images/certifitions/tryhackme .png'], 0)" title="Click to view full certificate photo">
+                        <img src="images/certifitions/tryhackme .png" alt="TryHackMe Certificate Photo" class="cert-img-thumb">
+                        <div class="cert-img-overlay"><i class="fa-solid fa-expand"></i> VIEW CERTIFICATE PHOTO</div>
+                    </div>
+
+                    <div class="cert-skill-tag"><i class="fa-solid fa-bug red"></i> Skills: Penetration Testing & Network Auditing</div>
                 </div>
             </div>
         </div>
